@@ -1,7 +1,10 @@
-import { Column, Entity, ManyToOne, OneToOne } from 'typeorm';
-import { BaseModel } from './Base.models';
-import { Personnage } from './Personnage.models';
-import { User } from './User.models';
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne } from 'typeorm';
+import { BaseModel } from './base.model';
+import { Inventaire } from './inventaire.model';
+import { Partie } from './partie.model';
+import { Personnage } from './personnage.model';
+
+import { User } from './user.model';
 
 @Entity()
 export class Heroes extends BaseModel{
@@ -37,4 +40,11 @@ export class Heroes extends BaseModel{
 
     @ManyToOne(()=> Personnage, personnage => personnage.heroes)
             public personnage? : Personnage
+    
+    @OneToOne(()=> Inventaire)
+    @JoinColumn()
+     public inventaire? : Inventaire
+
+     @OneToOne(() => Partie, partie => partie.heroes) // specify inverse side as a second parameter
+    public partie?: Partie;
 }

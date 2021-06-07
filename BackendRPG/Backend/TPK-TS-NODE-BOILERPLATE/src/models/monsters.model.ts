@@ -1,6 +1,7 @@
-import { Column, Entity, OneToMany } from 'typeorm';
-import { BaseModel } from './Base.models';
-import { Loots } from './Loots.models';
+import { Column, Entity, ManyToMany, OneToMany } from 'typeorm';
+import { BaseModel } from './base.model';
+import { Loots } from './loots.model';
+import { Partie } from './partie.model';
 
 @Entity()
 export class Monsters extends BaseModel{
@@ -29,4 +30,7 @@ export class Monsters extends BaseModel{
 
     @OneToMany(()=> Loots, loots => loots.monsters)
     public loots ?:Loots[];
+    
+    @ManyToMany(()=> Partie, parties => parties.monsters)
+    public partie? : Monsters[];
 }

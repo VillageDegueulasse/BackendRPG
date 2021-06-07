@@ -1,6 +1,8 @@
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
-import { BaseModel } from './Base.models';
-import { Heroes } from './Heroes.models';
+import { BaseModel } from './base.model';
+import { Heroes } from './heroes.model';
+import { Partie } from './partie.model';
+
 
 @Entity()
 export class User extends BaseModel{
@@ -25,5 +27,8 @@ export class User extends BaseModel{
     @OneToOne(()=> Heroes)
     @JoinColumn()
     public heroes? : Heroes
+
+    @OneToOne(() => Partie, partie => partie.user) // specify inverse side as a second parameter
+    public partie?: Partie;
     
 }

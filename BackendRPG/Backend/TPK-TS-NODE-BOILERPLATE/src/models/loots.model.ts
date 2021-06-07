@@ -1,6 +1,7 @@
 import { Column, Entity, ManyToOne } from 'typeorm';
-import { BaseModel } from './Base.models';
-import { Monsters } from './Monsters.models';
+import { BaseModel } from './base.model';
+import { Inventaire } from './inventaire.model';
+import { Monsters } from './monsters.model';
 enum Types{
     or,
     cuivre,
@@ -21,9 +22,12 @@ export class Loots extends BaseModel {
                 nullable:false
             })
             public gold? :number
-
+ 
             @ManyToOne(()=> Monsters, monsters => monsters.loots)
             public monsters? : Monsters
+
+            @ManyToOne(() => Inventaire, (inventaire) => inventaire.loots)
+            public inventaire?: Inventaire;
 
 
 

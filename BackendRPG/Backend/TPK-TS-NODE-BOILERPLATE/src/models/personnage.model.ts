@@ -1,6 +1,6 @@
 import { Column, Entity, OneToMany } from 'typeorm';
-import { BaseModel } from './Base.models';
-import { Heroes } from './Heroes.models';
+import { BaseModel } from './base.model';
+import { Heroes } from './heroes.model';
 
 enum Name{
     mage,

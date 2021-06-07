@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+
 import express, { Request, Response } from 'express';
 import { createConnection } from 'typeorm';
 
@@ -17,9 +18,7 @@ createConnection().then(async connection => {
     
     
 
-    if(connection){
-        // const result = await connection.query('SHOW DATABASES');  
-        
+    if(connection){              
         app.listen(port, () => {
             console.log(`localhost a démarré sur : http://localhost:${port}`);
             
