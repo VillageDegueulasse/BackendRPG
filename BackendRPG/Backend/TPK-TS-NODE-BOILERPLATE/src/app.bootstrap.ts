@@ -18,13 +18,13 @@ createConnection().then(async connection => {
     
 
     if(connection){
-        // const result = await connection.query('SHOW DATABASES');
-        console.log();
+        // const result = await connection.query('SHOW DATABASES');  
         
         app.listen(port, () => {
             console.log(`localhost a démarré sur : http://localhost:${port}`);
             
         });
+        console.log('Database sycronize');
     } else {
         console.log('il y a problème');        
     }
