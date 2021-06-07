@@ -1,12 +1,20 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
 import { BaseModel } from './base.model';
+import { Inventaire } from './inventaire.model';
+import { Pnj } from './pnj.model';
+
+enum types {
+	'armes',
+	'habit',
+	'objet'
+}
 
 @Entity()
 class Stuff extends BaseModel {
-	@Column({
+	@Column('varchar', {
 		nullable:false
 	})
-	public type!:string;
+	public type!:types;
 
 	@Column({
 		nullable:false
@@ -17,6 +25,24 @@ class Stuff extends BaseModel {
 		nullable:false
 	})
 	public gold!:number;
+	@Column({
+		nullable:false
+	})
+	public attaque!:number;
+	@Column({
+		nullable:false
+	})
+	public defense!:number;
+	@Column({
+		nullable:false
+	})
+	public buff!:number;
+
+	@ManyToOne(() => Pnj, (pnj) => pnj.stuff)
+  public pnj?: Pnj;
+
+	@ManyToOne(() => Inventaire, (inventaire) => inventaire.stuff)
+  public inventaire?: Inventaire;
 }
 
 export { Stuff };
