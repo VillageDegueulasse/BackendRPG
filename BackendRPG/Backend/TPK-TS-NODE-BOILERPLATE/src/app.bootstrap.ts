@@ -19,7 +19,7 @@ createConnection().then(async connection => {
 
     if(connection){
         // const result = await connection.query('SHOW DATABASES');
-        console.log();
+        // console.log(result);
         
         app.listen(port, () => {
             console.log(`localhost a démarré sur : http://localhost:${port}`);
