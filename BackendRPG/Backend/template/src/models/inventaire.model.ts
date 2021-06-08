@@ -1,4 +1,4 @@
-import { Column, Entity, OneToMany, OneToOne } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany, OneToOne } from 'typeorm';
 import { BaseModel } from './base.model';
 import { Heroes } from './heroes.model';
 import { Loots } from './loots.model';
@@ -16,8 +16,8 @@ class Inventaire extends BaseModel {
 	})
 	public poids!:number;
 
-	@OneToMany(() => Stuff, (stuff) => stuff.inventaire)
-    public stuff?: Stuff[];
+	@ManyToOne(() => Stuff, (stuff) => stuff.inventaire)
+    public stuff?: Stuff;
 	@OneToMany(() => Loots, (loots) => loots.inventaire)
     public loots?: Loots[];
 	
