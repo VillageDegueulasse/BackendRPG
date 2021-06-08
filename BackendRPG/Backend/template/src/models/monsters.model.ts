@@ -1,16 +1,18 @@
-import { Column, Entity, ManyToMany, OneToMany } from 'typeorm';
+import { BeforeInsert, Column, Entity, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
 import { BaseModel } from './base.model';
 import { Loots } from './loots.model';
 import { Partie } from './partie.model';
 
+
 @Entity()
 export class Monsters extends BaseModel{
-    @Column('varchar', {
-        nullable : false,
-        unique:true
+    @Column({
+        type: 'enum',
+        nullable : false,       
+        enum : ['Slime', 'Sanglier', 'Troll']       
     })
-    public name? : string
-    @Column('integer', {
+    public name?: string   
+    @Column('varchar', {
         nullable:false
     })
     public pointDeVie? : number
@@ -28,9 +30,9 @@ export class Monsters extends BaseModel{
     })
     public image?: string
 
-    @OneToMany(()=> Loots, loots => loots.monsters)
+    @ManyToOne(()=> Loots, loots => loots.monsters)
     public loots ?:Loots[];
     
     @ManyToMany(()=> Partie, parties => parties.monsters)
-    public partie? : Monsters[];
+    public partie? : Partie[];
 }

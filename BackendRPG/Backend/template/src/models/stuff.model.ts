@@ -11,7 +11,7 @@ enum types {
 
 @Entity()
 class Stuff extends BaseModel {
-	@Column('varchar', {
+	@Column({
 		nullable:false
 	})
 	public type!:types;

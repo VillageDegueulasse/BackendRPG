@@ -24,7 +24,7 @@ class Pnj extends BaseModel {
 	@OneToMany(() => Stuff, (stuff) => stuff.pnj)
   public stuff?: Stuff[];
 
-   @ManyToMany(()=> Partie, partie => partie.pnj)
+    @ManyToMany(()=> Partie, partie => partie.pnj)
         public partie?: Partie[];
 }
 

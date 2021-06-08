@@ -1,4 +1,4 @@
-import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
+import { Column, Entity, OneToOne } from 'typeorm';
 import { BaseModel } from './base.model';
 import { Heroes } from './heroes.model';
 import { Partie } from './partie.model';
@@ -9,26 +9,26 @@ export class User extends BaseModel{
     @Column('varchar', {
         nullable:false
     })
-    public pseudo?: string;
+    public name!: string;
 
     @Column('varchar', {
         nullable : false,
         unique : true
     })
-    public email?:string;  
+    public email!:string;  
     
-    @Column({
+    @Column('varchar', {
         nullable: false,
         length: 1024,
         select : false
     })
     public password!: string;   
 
-    @OneToOne(()=> Heroes)
-    @JoinColumn()
-    public heroes? : Heroes
+    @OneToOne(() => Heroes, heroes => heroes.user) // specify inverse side as a second parameter
+    public heroes!: Heroes;
+
 
     @OneToOne(() => Partie, partie => partie.user) // specify inverse side as a second parameter
-    public partie?: Partie;
+    public partie!: Partie;
     
 }

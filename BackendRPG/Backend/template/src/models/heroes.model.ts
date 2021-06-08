@@ -26,6 +26,10 @@ export class Heroes extends BaseModel{
         nullable : false
     })
     public attaque?: number
+    @Column('integer', {
+        nullable : false
+    })
+    public gold?: number
     @Column('varchar', {
         nullable: false
     })
@@ -35,9 +39,7 @@ export class Heroes extends BaseModel{
         nullable:false
     })
     public arme? : string
-    @OneToOne(() => User, user => user.heroes) // specify inverse side as a second parameter
-    public user?: User;
-
+  
     @ManyToOne(()=> Personnage, personnage => personnage.heroes)
             public personnage? : Personnage
     
@@ -47,4 +49,7 @@ export class Heroes extends BaseModel{
 
      @OneToOne(() => Partie, partie => partie.heroes) // specify inverse side as a second parameter
     public partie?: Partie;
+    @OneToOne(()=> User)
+    @JoinColumn()
+    public user? : User
 }

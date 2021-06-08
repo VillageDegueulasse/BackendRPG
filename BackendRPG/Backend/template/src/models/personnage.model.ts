@@ -2,20 +2,19 @@ import { Column, Entity, OneToMany } from 'typeorm';
 import { BaseModel } from './base.model';
 import { Heroes } from './heroes.model';
 
-enum Name{
-    mage,
-    chasseur,
-    guerrier
-}
+
+type Name = 'mage' | 'guerrier' | 'chasseur';
 
 @Entity()
 export class Personnage extends BaseModel{
-    @Column('varchar', {
+    @Column({
+        type: 'enum',
         nullable : false,
-        unique:true
+        unique:true,
+        enum : ['mage', 'guerrier', 'chasseur']       
     })
     public name?: Name
-    @Column('varchar', {
+    @Column({
         nullable: false
     })
     public image?: string

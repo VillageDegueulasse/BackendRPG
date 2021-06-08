@@ -8,7 +8,7 @@ import { User } from './user.model';
 @Entity()
 export class Partie extends BaseModel{
 
-    @Column('varchar', {
+    @Column({
         nullable: false,
         unique: true
     })

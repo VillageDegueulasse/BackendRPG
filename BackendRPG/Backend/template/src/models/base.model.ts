@@ -3,14 +3,14 @@ import { CreateDateColumn, DeleteDateColumn, PrimaryGeneratedColumn, UpdateDateC
 export class BaseModel {
 
 	@PrimaryGeneratedColumn('increment')
-	public id!: number;
+	public id?: number;
 		// Date de création automatique
 		@CreateDateColumn()
-		public creationDate!: Date;
+		public creationDate?: Date;
 	
 		// update de l'entité
 		@UpdateDateColumn()
-		public updateDate!: Date;
+		public updateDate?: Date;
 	
 		// Date de suppression => soft delete
 		@DeleteDateColumn()
