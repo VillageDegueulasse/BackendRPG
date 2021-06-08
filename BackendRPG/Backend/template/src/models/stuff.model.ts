@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
 import { BaseModel } from './base.model';
 import { Inventaire } from './inventaire.model';
 import { Pnj } from './pnj.model';
@@ -41,8 +41,8 @@ class Stuff extends BaseModel {
 	@ManyToOne(() => Pnj, (pnj) => pnj.stuff)
   public pnj?: Pnj;
 
-	@ManyToOne(() => Inventaire, (inventaire) => inventaire.stuff)
-  public inventaire?: Inventaire;
+	@OneToMany(() => Inventaire, (inventaire) => inventaire.stuff)
+  public inventaire?: Inventaire[];
 }
 
 export { Stuff };
