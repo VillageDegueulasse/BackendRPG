@@ -14,6 +14,7 @@ import { MonstersController } from './controllers/monsters.controller';
 import { apiLootRouter } from './routers/apiLoots.routes';
 import { LootController } from './controllers/loots.controller';
 import { apiMonsterRouter } from './routers/apiMonsters.routes';
+import { ErrorMiddleware } from './middlewares/Errors';
 
 
 
@@ -41,6 +42,12 @@ createConnection().then(async connection => {
     app.use(apiHeroesRouter);
     app.use(apiLootRouter);
     app.use(apiMonsterRouter);
+
+    //ERROR
+    //NotFOund
+    app.use(ErrorMiddleware.notFound);
+    //app error
+    app.use(ErrorMiddleware.appError);
 
     if(connection){              
         app.listen(port, () => {
