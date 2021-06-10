@@ -3,7 +3,6 @@
 import express, { Request, Response } from 'express';
 import { createConnection } from 'typeorm';
 import { UserController } from './controllers/user.controller';
-
 import { apiUserRouter } from './routers/apiUser.routes';
 import { json } from 'body-parser';
 import { PersonnageController } from './controllers/personnage.controller';
@@ -26,6 +25,7 @@ import { MapController } from './controllers/map.controller';
 import { apiMapRouter } from './routers/apiMap.routes';
 import { PartieController } from './controllers/partie.controller';
 import { apiPartieRouter } from './routers/apiPartie.routes';
+import { ErrorMiddleware } from './middlewares/Errors';
 
 
 
@@ -70,6 +70,12 @@ createConnection().then(async connection => {
     PersonnageController.init();
     MapController.init();
     PartieController.init();
+
+    //ERROR
+    //NotFOund
+    app.use(ErrorMiddleware.notFound);
+    //app error
+    app.use(ErrorMiddleware.appError);
 
     if(connection){              
         app.listen(port, () => {

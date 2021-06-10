@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { StuffController } from '../controllers/stuff.controller';
 
-
 const stuffRouter = Router();
 
 stuffRouter.get('/api/v1/stuff', StuffController.getAll);

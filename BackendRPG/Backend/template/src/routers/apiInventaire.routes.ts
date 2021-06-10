@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { InventaireController } from '../controllers/inventaire.controller';
 
-
 const inventaireRouter = Router();
 
 inventaireRouter.get('/api/v1/inventaire', InventaireController.getAll);

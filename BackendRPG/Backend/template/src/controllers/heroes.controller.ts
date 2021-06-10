@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Request, Response } from 'express';
 import { getRepository, Repository } from 'typeorm';
 import { Heroes } from '../models/heroes.model';

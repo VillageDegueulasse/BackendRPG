@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { PnjController } from '../controllers/pnj.controller';
 
-
 const pnjRouter = Router();
 
 pnjRouter.get('/api/v1/pnj', PnjController.getAll);
