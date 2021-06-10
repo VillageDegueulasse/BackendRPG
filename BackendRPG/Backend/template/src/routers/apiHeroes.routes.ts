@@ -9,8 +9,8 @@ const apiHeroesRouter = Router();
 
 apiHeroesRouter.post('/api/v1/createHeroes', HeroesValidator.getRules(), HeroesValidator.validate, catchErrors(HeroesController.create));
 apiHeroesRouter.get('/api/v1/heroesbyuser/:id', catchErrors(HeroesController.findHeroeByUserId));
-apiHeroesRouter.put('/api/v1/updateHeroes/:id', HeroesValidator.getRules(), HeroesValidator.validate, catchErrors(HeroesController.update));
-apiHeroesRouter.get('/api/v1/deleteHeroes/:id', HeroesValidator.getRules(), HeroesValidator.validate, catchErrors(HeroesController.delete));
+apiHeroesRouter.patch('/api/v1/updateHeroes/:id', HeroesValidator.getRules(), HeroesValidator.validate, catchErrors(HeroesController.update));
+apiHeroesRouter.delete('/api/v1/deleteHeroes/:id', HeroesValidator.getRules(), HeroesValidator.validate, catchErrors(HeroesController.delete));
 apiHeroesRouter.get('/api/v1/inventaireByheroesId/:id', catchErrors(HeroesController.findInventaireByHeroesId));
 
 
